@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('qs',200)->comment('question');
-            $table->text('deatils')->default(null)->comment('question details');
+            $table->text('deatils')->default('')->comment('question details');
             $table->timestamps();
         });
     }

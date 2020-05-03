@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {return view('welcome');});
+Route::get('/', [QuestionController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('question/new', [QuestionController::class,'create'] )->name('question.create');
+Route::post('question/new', [QuestionController::class,'store'] )->name('question.store');
+Route::get('question/my_questions', [QuestionController::class,'myQuestion'] )->name('question.eachuser');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('')
