@@ -1,5 +1,6 @@
 @extends('layouts.cardlayout')
 
+@section('card-header','Write Question')
 @section('content')
     @if (session('status'))
     <div class="alert alert-success" role="alert">

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\CommentRequest;
+use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -33,9 +36,15 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request, Question $question)
     {
-        //
+        $user  = Auth::user();
+        $user->comments()->create([
+            'question_id' => $question->id,
+            'comment' => $request->comment
+        ]);
+
+        return redirect()->route('question.show',['question' => $question->id])->with('success','New Comment Posted');
     }
 
     /**

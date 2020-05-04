@@ -24,7 +24,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{--  {{ config('app.name', 'Laravel') }}  --}}
+                    WebDev-Ask&Answer
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -77,7 +78,25 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">Dashboard</div>
+                            <div class="card-header  d-flex justify-content-between align-items-center">
+                                <div class="">
+                                        <h4>
+                                                @yield('card-header','Dashboard')
+                                        </h4>
+                                </div>
+
+                                <div class="">
+                                    <a class="text-dark" href="{{ route('allQuestion') }}">Home</a>
+                                    <span class="saparator">|</span>
+                                    @auth
+                                    <a class="text-dark" href="{{ route('question.eachuser') }}">My Question</a>
+                                    <span class="saparator">|</span>
+                                    <a class="text-dark" href="">My Comment</a>
+                                    <span class="saparator">|</span>    
+                                    @endauth
+                                    <a class="text-dark" href="{{ route('question.create') }}">New Question</a>
+                                </div>
+                            </div>
             
                             <div class="card-body">
                                @yield('content')

@@ -53,7 +53,7 @@ class QuestionController extends Controller
         $user = Auth::user();
         $user->questions()->create([
             'qs' => $request->qs,
-            'deatils' => $request->details ? $request->detatils : '',
+            'details' => $request->details==null? '' : $request->details,
         ]);
 
         return redirect()->route('question.eachuser');
@@ -67,7 +67,8 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        $comments = $question->comments;
+        return view('myview.question_details', compact('question', 'comments'));
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {return view('welcome');});
-Route::get('/', [QuestionController::class, 'index']);
+Route::get('/', [QuestionController::class, 'index'])->name('allQuestion');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('question/new', [QuestionController::class,'create'] )->name('question.create');
-Route::post('question/new', [QuestionController::class,'store'] )->name('question.store');
-Route::get('question/my_questions', [QuestionController::class,'myQuestion'] )->name('question.eachuser');
+Route::middleware('auth')->group(function () {
+    Route::get('question/new', [QuestionController::class,'create'])->name('question.create');
+    Route::post('question/new', [QuestionController::class,'store'])->name('question.store');
+    Route::get('question/my_questions', [QuestionController::class,'myQuestion'])->name('question.eachuser');
+    Route::get('/question/{question}', [QuestionController::class,'show'])->name('question.show');
+
+    Route::post('/question/{question}/comment', [CommentController::class, 'store'])->name('comment.store');
+});
 
 // Route::get('')
