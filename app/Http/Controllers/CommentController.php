@@ -17,7 +17,10 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $allComments = Comment::where('user_id', $user->id)->orderBy('created_at','desc')->paginate(5);
+        // return $allComments;
+        return view('myview.mycomment', compact('allComments'));
     }
 
     /**

@@ -91,7 +91,7 @@
                                     @auth
                                     <a class="text-dark" href="{{ route('question.eachuser') }}">My Question</a>
                                     <span class="saparator">|</span>
-                                    <a class="text-dark" href="">My Comment</a>
+                                    <a class="text-dark" href="{{ route('comment.mycomments') }}">My Comment</a>
                                     <span class="saparator">|</span>    
                                     @endauth
                                     <a class="text-dark" href="{{ route('question.create') }}">New Question</a>

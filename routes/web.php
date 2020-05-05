@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/question/{question}', [QuestionController::class,'show'])->name('question.show');
 
     Route::post('/question/{question}/comment', [CommentController::class, 'store'])->name('comment.store');
+    Route::get('/comments/mycomments', [CommentController::class,'index'])->name('comment.mycomments');
 });
 
 // Route::get('')
