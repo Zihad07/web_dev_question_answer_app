@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentLikeUnlikeController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuestionLikeUnlikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {return view('welcome');});
 Route::get('/', [QuestionController::class, 'index'])->name('allQuestion');
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -26,10 +29,15 @@ Route::middleware('auth')->group(function () {
     Route::get('question/new', [QuestionController::class,'create'])->name('question.create');
     Route::post('question/new', [QuestionController::class,'store'])->name('question.store');
     Route::get('question/my_questions', [QuestionController::class,'myQuestion'])->name('question.eachuser');
-    Route::get('/question/{question}', [QuestionController::class,'show'])->name('question.show');
+    
 
     Route::post('/question/{question}/comment', [CommentController::class, 'store'])->name('comment.store');
     Route::get('/comments/mycomments', [CommentController::class,'index'])->name('comment.mycomments');
 });
+Route::get('/question/{question}', [QuestionController::class,'show'])->name('question.show');
 
+Route::get('/question_like/{question}', [QuestionLikeUnlikeController::class, 'like'])->name('question.like');
+Route::get('/question_unlike/{question}', [QuestionLikeUnlikeController::class, 'unlike'])->name('question.unlike');
+Route::get('/comment_like/{question}/{comment}', [CommentLikeUnlikeController::class, 'like'])->name('comment.like');
+Route::get('/comment_unlike/{question}/{comment}', [CommentLikeUnlikeController::class, 'unlike'])->name('comment.unlike');
 // Route::get('')

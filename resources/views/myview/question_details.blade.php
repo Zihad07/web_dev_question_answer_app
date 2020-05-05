@@ -12,6 +12,14 @@
         posted by <span class="font-weight-bold">{{ $question->user->name }}</>
         <span class="separator">|</span>
         {{ $question->created_at->diffForHumans() }}
+        <span class="separator">|</span>
+        <a href="{{ route('question.like',$question->id) }}">
+            Like
+        </a>({{ $qlike }})
+        <span class="separator">|</span>
+        <a href="{{ route('question.unlike', $question->id) }}">
+            Unlike
+        </a>({{ $qunlike }})
     </div>
     <hr>
 
@@ -22,6 +30,14 @@
             {{ $comment->user->name }}
             <span class="separator">|</span>
             {{ $comment->created_at->diffForHumans() }}
+            <span class="separator">|</span>
+            <a href="{{ route('comment.like',['question'=>$question->id,'comment' => $comment->id]) }}">
+                Like
+            </a>({{ $comment->likes->count() }})
+            <span class="separator">|</span>
+            <a href="{{ route('comment.unlike',['question'=>$question->id,'comment' => $comment->id]) }}">
+                Unlike
+            </a>({{ $comment->unlikes->count() }})
             <hr>
         @endforeach
 
@@ -33,7 +49,7 @@
                 </div>
         
                 <div class="form-group">
-                    <input type="New comment" value="Sunmit" class="btn btn-success btn-sm">
+                    <input type="submit" value="New comment" class="btn btn-success btn-sm">
                 </div>
         </form>
     @else

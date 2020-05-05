@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\CommentLikeUnlike;
 use App\Http\Requests\QuestionRequest;
 use App\Question;
+use App\QuestionLikeUnlike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,8 +69,14 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
+        // $user = Auth::user();
         $comments = $question->comments;
-        return view('myview.question_details', compact('question', 'comments'));
+        $qlike = QuestionLikeUnlike::where('like',1)->where('question_id',$question->id)->get()->count();
+        $qunlike = QuestionLikeUnlike::where('unlike',1)->where('question_id',$question->id)->get()->count();
+        $clike = CommentLikeUnlike::where('like',1)->get()->count();
+        $cunlike = CommentLikeUnlike::where('unlike',1)->get()->count();
+        return view('myview.question_details', 
+        compact('question', 'comments', 'qlike', 'qunlike','clike','cunlike'));
     }
 
     /**

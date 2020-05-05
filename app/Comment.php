@@ -15,4 +15,13 @@ class Comment extends Model
     public function question() {
         return $this->belongsTo(Question::class);
     }
+
+    public function likes() {
+        // return $this->hasMany('App\CommentLikeUnlike')->where('like',1)->get();
+        return $this->hasMany('App\CommentLikeUnlike')->where('like',1);
+    }
+    public function unlikes() {
+        // return $this->hasMany('App\CommentLikeUnlike')->where('unlike',1)->get();
+        return $this->hasMany('App\CommentLikeUnlike')->where('unlike',1);
+    }
 }
