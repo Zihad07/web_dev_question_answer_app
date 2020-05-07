@@ -11,7 +11,7 @@ class QuestionLikeUnlikeController extends Controller
 {
 
 
-    
+
 
     public function userQuestionCreate($qsId) {
         $user = Auth::user();
@@ -25,6 +25,7 @@ class QuestionLikeUnlikeController extends Controller
         }
     }
     public function like(Question $question) {
+
         $user = Auth::user();
         $this->userQuestionCreate($question->id);
         $userql = QuestionLikeUnlike::where('user_id',$user->id)->where('question_id', $question->id)->get();
@@ -45,8 +46,10 @@ class QuestionLikeUnlikeController extends Controller
         $userlike->save();
 
         // return $userlike;
-        return redirect()->back();
-        
+        // return redirect()->back();
+        $like = QuestionLikeUnlike::where('like',1)->where('question_id',$question->id)->get()->count();
+        return $like;
+
     }
 
     public function unlike(Question $question) {
@@ -70,6 +73,20 @@ class QuestionLikeUnlikeController extends Controller
         $userUnlike->save();
 
         // return $userUnlike;
-        return redirect()->back();
+        // return redirect()->back();
+        $unlike = QuestionLikeUnlike::where('unlike',1)->where('question_id',$question->id)->get()->count();
+        return $unlike;
+    }
+
+    public function refreshLike(Question $question) {
+        $like = QuestionLikeUnlike::where('like',1)->where('question_id',$question->id)->get()->count();
+        return $like;
+
+    }
+    public function refreshUnike(Question $question) {
+        $unlike = QuestionLikeUnlike::where('unlike',1)->where('question_id',$question->id)->get()->count();
+
+        return $unlike;
+
     }
 }
