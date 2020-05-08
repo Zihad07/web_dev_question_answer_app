@@ -8,7 +8,7 @@
     </div>
     @endif
 
-    
+
     @forelse ($allquestion as $question)
         <p>
             <a href="{{ route('question.show',['question' => $question->id]) }}">{{ $question->qs }} <span class="text-secondary">({{ $question->comments->count() }}) comments</span></a>
@@ -16,4 +16,8 @@
     @empty
         <p class="text-secodary">No One Asking Qeustion Yet...</p>
     @endforelse
+
+    @if($allquestion->links())
+        {{ $allquestion->links() }}
+    @endif
 @endsection

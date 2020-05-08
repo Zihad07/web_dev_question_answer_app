@@ -9,7 +9,7 @@
     @endif
 
     <div class="text-secodary">
-        posted by <span class="font-weight-bold">{{ $question->user->name }}</>
+        posted by <span class="font-weight-bold">{{ $question->user->name }}</span>
         <span class="separator">|</span>
         {{ $question->created_at->diffForHumans() }}
         {{-- <span class="separator">|</span>
@@ -47,6 +47,7 @@
             <comment-like-unlike :question="{{$question->id}}" :comment="{{$comment->id}}"></comment-like-unlike>
             <hr>
         @endforeach
+        {{ $comments->links() }}
 
         {{--  comment section post  --}}
         <form method="post" action="{{ route('comment.store',['question'=>$question->id]) }}">

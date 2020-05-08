@@ -22,5 +22,6 @@
     @empty
         <p>You Are Not Comment Of Any Post At Yet...</p>
     @endforelse
+    {{ $allComments->links() }}
 </div>
 @endsection

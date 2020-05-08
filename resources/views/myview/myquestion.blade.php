@@ -15,4 +15,5 @@
     @empty
         <p class="text-secodary"> I Am Not Asking Qeustion Yet...</p>
     @endforelse
+    {{ $allquestion->links() }}
 @endsection

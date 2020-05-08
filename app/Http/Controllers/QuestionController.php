@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\CommentLikeUnlike;
 use App\Http\Requests\QuestionRequest;
 use App\Question;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -19,14 +20,15 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $allquestion = Question::with('comments')->latest()->get();
+//        $allquestion = Question::with('comments')->latest()->get();
+        $allquestion = Question::with('comments')->latest()->paginate(10);
         // return $allquestion;
         return view('myview.question',compact('allquestion'));
     }
 
     public function myQuestion() {
         // $allquestion = Question::with('comments')->latest()->get();
-        $allquestion = Auth::user()->questions()->with('comments')->latest()->get();
+        $allquestion = Auth::user()->questions()->with('comments')->latest()->paginate(5);
         // return $allquestion['id'];
 
         // return $allquestion;
@@ -70,12 +72,13 @@ class QuestionController extends Controller
     public function show(Question $question)
     {
         // $user = Auth::user();
-        $comments = $question->comments;
+//        $comments = $question->comments;
+        $comments = Comment::where('question_id',$question->id)->latest()->paginate(2);
         $qlike = QuestionLikeUnlike::where('like',1)->where('question_id',$question->id)->get()->count();
         $qunlike = QuestionLikeUnlike::where('unlike',1)->where('question_id',$question->id)->get()->count();
         $clike = CommentLikeUnlike::where('like',1)->get()->count();
         $cunlike = CommentLikeUnlike::where('unlike',1)->get()->count();
-        return view('myview.question_details', 
+        return view('myview.question_details',
         compact('question', 'comments', 'qlike', 'qunlike','clike','cunlike'));
     }
 
