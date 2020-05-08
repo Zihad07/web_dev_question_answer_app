@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/question_like/refresh/{question}',[QuestionLikeUnlikeController::class,'refreshLike'])->name('question.refreshlike');
     Route::get('/question_unlike/refresh/{question}',[QuestionLikeUnlikeController::class,'refreshUnike'])->name('question.refreshunlike');
+
+    Route::get('/comment_like_unlike/refresh/{comment}',[CommentLikeUnlikeController::class,'refresh'])->name('comment.refresh');
 // Route::get('')
 
 });

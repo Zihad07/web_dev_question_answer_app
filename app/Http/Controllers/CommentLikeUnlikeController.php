@@ -44,7 +44,7 @@ class CommentLikeUnlikeController extends Controller
 
         // return $userlike;
         return redirect()->back();
-        
+
     }
 
     public function unlike(Question $question,Comment $comment) {
@@ -69,5 +69,11 @@ class CommentLikeUnlikeController extends Controller
 
         // return $userUnlike;
         return redirect()->back();
+    }
+
+    public function refresh(Comment $comment) {
+        $like = CommentLikeUnlike::where('comment_id',$comment->id)->where('like',1)->get()->count();
+        $unlike = CommentLikeUnlike::where('comment_id',$comment->id)->where('unlike',1)->get()->count();
+        return response()->json(["like" => $like, "unlike" => $unlike]);
     }
 }

@@ -35,14 +35,16 @@
             {{ $comment->user->name }}
             <span class="separator">|</span>
             {{ $comment->created_at->diffForHumans() }}
-            <span class="separator">|</span>
-            <a href="{{ route('comment.like',['question'=>$question->id,'comment' => $comment->id]) }}">
-                Like
-            </a>({{ $comment->likes->count() }})
-            <span class="separator">|</span>
-            <a href="{{ route('comment.unlike',['question'=>$question->id,'comment' => $comment->id]) }}">
-                Unlike
-            </a>({{ $comment->unlikes->count() }})
+{{--            <span class="separator">|</span>--}}
+{{--            <a href="{{ route('comment.like',['question'=>$question->id,'comment' => $comment->id]) }}">--}}
+{{--                Like--}}
+{{--            </a>({{ $comment->likes->count() }})--}}
+{{--            <span class="separator">|</span>--}}
+{{--            <a href="{{ route('comment.unlike',['question'=>$question->id,'comment' => $comment->id]) }}">--}}
+{{--                Unlike--}}
+{{--            </a>({{ $comment->unlikes->count() }})--}}
+
+            <comment-like-unlike :question="{{$question->id}}" :comment="{{$comment->id}}"></comment-like-unlike>
             <hr>
         @endforeach
 

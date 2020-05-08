@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('question-like', require('./components/QuestionLikeComponent.vue').default);
 Vue.component('question-unlike', require('./components/QuestionUnlikeComponent.vue').default);
 Vue.component('question-like-unlike', require('./components/QuestionLikeUnlikeComponent.vue').default);
+Vue.component('comment-like-unlike', require('./components/CommentLikeUnlikeComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
