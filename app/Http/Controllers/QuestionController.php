@@ -60,7 +60,7 @@ class QuestionController extends Controller
             'details' => $request->details==null? '' : $request->details,
         ]);
 
-        return redirect()->route('question.eachuser');
+        return redirect()->route('question.eachuser')->with('success', 'Your Question Created Succesully.');
     }
 
     /**

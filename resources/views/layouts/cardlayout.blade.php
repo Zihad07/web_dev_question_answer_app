@@ -99,6 +99,7 @@
                             </div>
             
                             <div class="card-body">
+                                @include('message.message')
                                @yield('content')
                             </div>
                         </div>
