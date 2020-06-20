@@ -19,11 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {return view('welcome');});
 Route::get('/', [QuestionController::class, 'index'])->name('allQuestion');
+Route::get('/about',[\App\Http\Controllers\ExploreController::class,'about'])->name('about');
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('question/new', [QuestionController::class,'create'])->name('question.create');

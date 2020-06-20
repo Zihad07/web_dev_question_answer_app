@@ -1,9 +1,9 @@
 <template>
     <span>
         <span class="separator">|</span>
-        <span style="cursor:pointer;" @click="likeAction">myLike({{ like }})</span>
+        <span style="cursor:pointer;" @click="likeAction">Like({{ like }})</span>
         <span class="separator">|</span>
-        <span style="cursor:pointer;" @click="unlikeAction">myUnlike({{ unlike }})</span>
+        <span style="cursor:pointer;" @click="unlikeAction">Unlike({{ unlike }})</span>
     </span>
 </template>
 

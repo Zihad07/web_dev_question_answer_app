@@ -92,25 +92,34 @@
                                     <a class="text-dark" href="{{ route('question.eachuser') }}">My Question</a>
                                     <span class="saparator">|</span>
                                     <a class="text-dark" href="{{ route('comment.mycomments') }}">My Comment</a>
-                                    <span class="saparator">|</span>    
+                                    <span class="saparator">|</span>
                                     @endauth
                                     <a class="text-dark" href="{{ route('question.create') }}">New Question</a>
+                                    <span class="saparator">|</span>
+
+                                    <a class="text-dark" href="{{ route('about') }}">About</a>
+
                                 </div>
                             </div>
-            
+
                             <div class="card-body">
                                 @include('message.message')
                                @yield('content')
                             </div>
                         </div>
+
+                        <footer style="color: gray;" class="text-center py-1">
+                            &copy; 2020 | Powered by <small>Zihad</small>
+                        </footer>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-    
+
     <!-- Scripts -->
+    <script src="http://unpkg.com/turbolinks"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    
+
 </body>
 </html>

@@ -37855,7 +37855,7 @@ var render = function() {
     _c(
       "span",
       { staticStyle: { cursor: "pointer" }, on: { click: _vm.likeAction } },
-      [_vm._v("myLike(" + _vm._s(_vm.like) + ")")]
+      [_vm._v("Like(" + _vm._s(_vm.like) + ")")]
     ),
     _vm._v(" "),
     _c("span", { staticClass: "separator" }, [_vm._v("|")]),
@@ -37863,7 +37863,7 @@ var render = function() {
     _c(
       "span",
       { staticStyle: { cursor: "pointer" }, on: { click: _vm.unlikeAction } },
-      [_vm._v("myUnlike(" + _vm._s(_vm.unlike) + ")")]
+      [_vm._v("Unlike(" + _vm._s(_vm.unlike) + ")")]
     )
   ])
 }
@@ -37970,7 +37970,7 @@ var render = function() {
     _c(
       "span",
       { staticStyle: { cursor: "pointer" }, on: { click: _vm.likeAction } },
-      [_vm._v("myLike(" + _vm._s(_vm.like) + ")")]
+      [_vm._v("Like(" + _vm._s(_vm.like) + ")")]
     ),
     _vm._v(" "),
     _c("span", { staticClass: "separator" }, [_vm._v("|")]),
@@ -37978,7 +37978,7 @@ var render = function() {
     _c(
       "span",
       { staticStyle: { cursor: "pointer" }, on: { click: _vm.unlikeAction } },
-      [_vm._v("myUnlike(" + _vm._s(_vm.unlike) + ")")]
+      [_vm._v("Unlike(" + _vm._s(_vm.unlike) + ")")]
     )
   ])
 }
