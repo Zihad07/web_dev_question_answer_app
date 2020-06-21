@@ -59,6 +59,9 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
+                                <br class="">
+                                <a class="text-dark text-sm mt-1" href="{{ route('register') }}">Register</a>
                             </div>
                         </div>
                     </form>

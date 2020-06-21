@@ -78,14 +78,15 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header  d-flex justify-content-between align-items-center">
-                                <div class="">
+                            <div class="card-header">
+                               <div class="row align-items-center">
+                                    <div class="col-lg-4">
                                         <h4>
                                                 @yield('card-header','Dashboard')
                                         </h4>
                                 </div>
 
-                                <div class="">
+                                <div class="col-lg-8">
                                     <a class="text-dark" href="{{ route('allQuestion') }}">Home</a>
                                     <span class="saparator">|</span>
                                     @auth
@@ -93,12 +94,35 @@
                                     <span class="saparator">|</span>
                                     <a class="text-dark" href="{{ route('comment.mycomments') }}">My Comment</a>
                                     <span class="saparator">|</span>
+                            
                                     @endauth
                                     <a class="text-dark" href="{{ route('question.create') }}">New Question</a>
                                     <span class="saparator">|</span>
 
                                     <a class="text-dark" href="{{ route('about') }}">About</a>
+                                    
+                                   
+                                    
+                                    
+                                    @auth
+                                     <span class="saparator">|</span>
+                                    <a class="text-dark" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form-me').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
+                                    <form id="logout-form-me" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    @endauth
+                                    
+                                    @guest
+                                        <span class="saparator">|</span>
+                                        <a class="text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    @endguest
+
+                                </div>
                                 </div>
                             </div>
 
@@ -118,8 +142,12 @@
     </div>
 
     <!-- Scripts -->
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <script src="http://unpkg.com/turbolinks"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-
 </body>
 </html>
